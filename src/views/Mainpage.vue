@@ -213,8 +213,5 @@
         components: {
             Products, Error
         },
-        async mounted() {
-            await this.$store.dispatch('fetchEnvApi')
-        }
     }
 </script>

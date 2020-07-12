@@ -1,3 +1,29 @@
 <template>
-    <div class="big-black-block"></div>
+    <div class="error-block" v-if="isVisible">
+        <p class="error-msg">
+            <button class="close-btn" @click="setError('')">x</button>
+            {{text}}
+        </p>
+    </div>
 </template>
+
+<script>
+    export default {
+        name: 'error',
+        data() {
+            return {
+                text: '',
+            }
+        },
+        methods: {
+            setError(error) {
+                this.text = error;
+            },
+        },
+        computed: {
+            isVisible() {
+                return this.text !== '';
+            },
+        }
+    }
+</script>

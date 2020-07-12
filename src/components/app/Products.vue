@@ -16,6 +16,29 @@
         name: 'products',
         components: {
             Product
+        },
+        data() {
+            return {
+                API: 'https://raw.githubusercontent.com/Konstantin108/Vue-store-project2/master/responses',
+                catalogUrl: '/catalogData.json',
+                products: [],
+                filtered: [],
+            }
+        },
+        methods: {
+            filter(value) {
+                let regexp = new RegExp(value, 'i');
+                this.filtered = this.products.filter(el => regexp.test(el.product_name));
+            }
+        },
+        mounted() {
+            this.$parent.getJson(`${API + this.catalogUrl}`)
+                .then(data => {
+                    for (let el of data) {
+                        this.products.push(el);
+                        this.filtered.push(el);
+                    }
+                });
         }
     }
 </script>

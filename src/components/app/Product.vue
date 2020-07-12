@@ -15,3 +15,16 @@
         </div>
     </div>
 </template>
+
+<script>
+    export default {
+        name: 'product',
+        props: ['product', 'img', 'href'],
+        data() {
+            return {
+                API: 'https://raw.githubusercontent.com/Konstantin108/Vue-store-project2/master/responses',
+                cartAPI: this.$root.$refs.cart,
+            };
+        }
+    }
+</script>
